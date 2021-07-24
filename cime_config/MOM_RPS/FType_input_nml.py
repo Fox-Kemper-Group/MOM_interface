@@ -1,16 +1,17 @@
-import os
-from MOM_RPS import MOM_RPS
+import os, sys
 
-class FType_input_nml(MOM_RPS):
+CIMEROOT = os.environ.get("CIMEROOT")
+if CIMEROOT is None:
+    raise SystemExit("ERROR: must set CIMEROOT environment variable")
+sys.path.append(os.path.join(CIMEROOT, "scripts", "lib", "CIME", "ParamGen"))
+from paramgen import ParamGen
+
+class FType_input_nml(ParamGen):
     """Encapsulates data and read/write methods for MOM6 (FMS) input.nml file"""
 
     def write(self, output_path, case):
 
-        # Expand cime parameters in values of key:value pairs (e.g., $INPUTDIR)
-        self.expand_case_vars(case)
-
-        # Apply the guards on the general data to get the targeted values
-        self.infer_values(case)
+        self.reduce(lambda varname: case.get_value(varname))
 
         with open(os.path.join(output_path), 'w') as input_nml:
             for module in self._data:
