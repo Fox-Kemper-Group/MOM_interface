@@ -14,7 +14,7 @@ class FType_input_data_list(ParamGen):
         def expand_func(varname):
             val = case.get_value(varname)
             if val==None:
-                val = MOM_input_final.data['Global'][varname]['value']
+                val = MOM_input_final.data['Global'][varname]['value'].strip()
             if val==None:
                 raise RuntimeError("Cannot determine the value of variable: "+varname)
             return val
@@ -28,7 +28,7 @@ class FType_input_data_list(ParamGen):
                 for file_category in self._data[module]:
                     file_path = self._data[module][file_category]
                     if file_path != None:
-                        file_path = file_path.replace('"','').replace("'","")
+                        file_path = file_path.replace('"','').replace("'","").strip()
                         if os.path.isabs(file_path):
                             input_data_list.write(file_category+" = "+file_path+"\n")
                         else:

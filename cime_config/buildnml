@@ -9,7 +9,7 @@
 # Disable these because this is our standard setup
 # pylint: disable=wildcard-import,unused-wildcard-import,wrong-import-position
 
-import os, shutil, sys, glob, stat, filecmp, imp
+import os, shutil, sys, glob, stat, filecmp
 
 CIMEROOT = os.environ.get("CIMEROOT")
 if CIMEROOT is None:

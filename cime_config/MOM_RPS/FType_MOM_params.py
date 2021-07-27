@@ -1,9 +1,14 @@
-import os
-from MOM_RPS import MOM_RPS
-from rps_utils import get_str_type
+import os, sys
 from collections import OrderedDict
 
-class FType_MOM_params(MOM_RPS):
+CIMEROOT = os.environ.get("CIMEROOT")
+if CIMEROOT is None:
+    raise SystemExit("ERROR: must set CIMEROOT environment variable")
+sys.path.append(os.path.join(CIMEROOT, "scripts", "lib", "CIME", "ParamGen"))
+from paramgen import ParamGen
+from paramgen_utils import get_str_type
+
+class FType_MOM_params(ParamGen):
     """ Encapsulates data and read/write methods for MOM6 case parameter files: MOM_input, user_nl.
     """
 
@@ -102,11 +107,8 @@ class FType_MOM_params(MOM_RPS):
 
         str_type = get_str_type()
 
-        # Expand cime parameters in values of key:value pairs (e.g., $INPUTDIR)
-        self.expand_case_vars(case)
-
-        # Apply the guards on the general data to get the targeted values
-        self.infer_values(case)
+        # Reduce Param Data
+        self.reduce(lambda varname: case.get_value(varname))
 
         # 2. Now, write MOM_input
 
