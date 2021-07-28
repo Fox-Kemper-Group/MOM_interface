@@ -1,35 +1,18 @@
 {
    "MOM_input_nml": {
-      "output_directory": {
-         "value": "'./'"
-      },
-      "restart_input_dir": {
-         "value": "'./'"
-      },
-      "restart_output_dir": {
-         "value": "'./'"
-      },
-      "parameter_filename": {
-         "value": "'MOM_input', 'MOM_override'"
-      }
+      "output_directory": "'./'",
+      "restart_input_dir": "'./'",
+      "restart_output_dir": "'./'",
+      "parameter_filename": "'MOM_input', 'MOM_override'"
    },
    "fms_nml": {
-      "clock_grain": {
-         "value": "'ROUTINE'"
-      },
-      "clock_flags": {
-         "value": "'NONE'"
-      },
-      "domains_stack_size": {
-         "value": 5000000
-      },
-      "stack_size": {
-         "value": 0
-      }
+      "clock_grain": "'ROUTINE'",
+      "clock_flags": "'NONE'",
+      "domains_stack_size": 5000000,
+      "stack_size": 0
    },
    "diag_manager_nml": {
-      "flush_nc_files": {
-         "value": ".true."
-      }
+      "flush_nc_files": ".true.",
+      "use_mpp_io": ".true."
    }
 }
