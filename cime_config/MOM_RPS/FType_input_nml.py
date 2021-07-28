@@ -12,16 +12,4 @@ class FType_input_nml(ParamGen):
     def write(self, output_path, case):
 
         self.reduce(lambda varname: case.get_value(varname))
-
-        with open(os.path.join(output_path), 'w') as input_nml:
-            for module in self._data:
-                input_nml.write("&"+module+"\n")
-
-                for var in self._data[module]:
-                    val = self._data[module][var]["value"]
-                    if val==None:
-                        continue
-                    input_nml.write("    "+var+" = "+str(self._data[module][var]["value"])+"\n")
-
-                input_nml.write('/\n\n')
-
+        self.write_nml(output_path)
