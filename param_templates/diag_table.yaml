@@ -70,7 +70,7 @@ Files:
         new_file_freq_units:
             $TEST == True: "days"
             else: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE != "none":
@@ -93,7 +93,7 @@ Files:
         new_file_freq_units:
             $TEST == True: "days"
             else: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE != "none":
@@ -127,7 +127,7 @@ Files:
         new_file_freq_units:
             $TEST == True: "days"
             else: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE != "none":
@@ -149,7 +149,7 @@ Files:
         time_axis_units: "days"
         new_file_freq: 1
         new_file_freq_units: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE != "none" and $TEST is not True :
@@ -164,7 +164,7 @@ Files:
         time_axis_units: "days"
         new_file_freq: 1
         new_file_freq_units: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE == "development":
@@ -180,7 +180,7 @@ Files:
         time_axis_units: "days"
         new_file_freq: 1
         new_file_freq_units: "months"
-        reduction_method: "mean"    # time average
+        reduction_method: "none"    # time average
         regional_section: "none"    # global
         fields:
             $OCN_DIAG_MODE == "development":
